@@ -1,27 +1,23 @@
-import { takeLatest,put,call,fork } from 'redux-saga/effects';
-import post, { getAllPost, setAllPost } from './post';
-import { getAllPostDetails } from '../api/index'
+import { takeLatest, put, call, fork } from "redux-saga/effects";
+import { getAllPost, setAllPost } from "./post";
+import { getAllPostDetails } from "../api/index";
 
+function* loadAllPostAsync({ payload }) {
+  try {
+    const postName = payload;
+    const response = yield call(getAllPostDetails, postName);
 
-function* loadAllPostAsync({payload}) {
-
-    try{
-
-        const postName = payload;
-        const response = yield call(getAllPostDetails,postName);
-        
-        if(response.status === 200)  {
-            //console.log(response.status,response);
-            yield put(setAllPost(response.data.data));
-        }
-
-    }catch(error){
-        console.log(error);
+    if (response.status === 200) {
+      //console.log(response.status,response);
+      yield put(setAllPost(response.data.data));
     }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-function* loadAllPost(){
-    yield takeLatest(getAllPost.type,loadAllPostAsync);
+function* loadAllPost() {
+  yield takeLatest(getAllPost.type, loadAllPostAsync);
 }
 
 export const postSaga = [fork(loadAllPost)];

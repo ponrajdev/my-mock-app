@@ -40,12 +40,10 @@ input {
   font-size: 16px;
 }
 
-input[type=text] {
+input[type="text"] {
   background-color: #f1f1f1;
   width: 100%;
 }
-
-
 
 .autocomplete-items {
   position: absolute;
@@ -62,23 +60,22 @@ input[type=text] {
 .autocomplete-items div {
   padding: 10px;
   cursor: pointer;
-  background-color: #fff; 
-  border-bottom: 1px solid #d4d4d4; 
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
 }
 
 /*when hovering an item:*/
 .autocomplete-items div:hover {
-  background-color: #e9e9e9; 
+  background-color: #e9e9e9;
 }
 
 /*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
-  background-color: DodgerBlue !important; 
-  color: #ffffff; 
+  background-color: DodgerBlue !important;
+  color: #ffffff;
 }
 
 #myInput {
-  
   background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
   width: 100%; /* Full-width */
@@ -95,11 +92,14 @@ input[type=text] {
   margin: 0;
   position: absolute;
   width: 96%;
-  overflow: hidden;
+  overflow: auto;
   z-index: 1;
+  height: 300px;
+  max-height: 500px;
+  display: none;
 }
 
-#myUL li p {
+#myUL li {
   border: 1px solid #ddd; /* Add a border to all links */
   margin-top: -1px; /* Prevent double borders */
   background-color: #f6f6f6; /* Grey background color */
@@ -114,8 +114,12 @@ input[type=text] {
   background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
 
-
-
+.card-header svg {
+  float: right;
+  height: 22px;
+  padding: 5px;
+  color: red;
+}
 
 @keyframes App-logo-spin {
   from {
